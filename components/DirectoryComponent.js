@@ -7,7 +7,7 @@ import Loading from "./LoadingComponent";
 
 const mapStateToProps = (state) => {
   return {
-    partners: state.partners,
+    campsites: state.campsites,
   };
 };
 
