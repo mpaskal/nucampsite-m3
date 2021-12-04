@@ -330,14 +330,14 @@ const AppNavigator = createAppContainer(MainNavigator);
 
 class Main extends Component {
   showNetInfo = async () => {
-    NetInfo.fetch().await((connectionInfo) => {
-      Platform.OS === "ios"
-        ? Alert.alert("Initial Network Connectivity Type:", connectionInfo.type)
-        : ToastAndroid.show(
-            "Initial Network Connectivity Type: " + connectionInfo.type,
-            ToastAndroid.LONG
-          );
-    });
+    let connectionInfo = await NetInfo.fetch();
+
+    Platform.OS === "ios"
+      ? Alert.alert("Initial Network Connectivity Type:", connectionInfo.type)
+      : ToastAndroid.show(
+          "Initial Network Connectivity Type: " + connectionInfo.type,
+          ToastAndroid.LONG
+        );
   };
   componentDidMount() {
     this.props.fetchCampsites();
